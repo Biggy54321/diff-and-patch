@@ -1,0 +1,35 @@
+REFERENCES
+
+1. www.xmailserver.org/diff2.pdf
+The above page has the algorithm which finds the LARGEST COMMON SUBSEQUENCE (LCS) of the two given strings. The 
+difference between the normal DYNAMIC PROGRAMMING WAY of finding the LCS and the algorithm specified in this page
+is that, the algorithm gives the LCS such we have to make minimum changes in the FROM-file to convert it into
+the TO-file. The algorithm was put forth by Eugene Myers and hence called as Myer's diff algorithm. It is an
+example of greedy algorithm, which helps us to find the SHORTESTS EDIT SCRIPT. The number of possible edit scripts
+to change the FROM-file to TO-file are many, but Myer's diff algorithm gives only that script which will require
+shortest number of edits. (each edit is either ADD or DELETE)
+
+2. http://man7.org/linux/man-pages/man1/diff.1.html
+The man page was used to understand what each of the option of the diff program was supposed to do. And to know
+the usage of the diff program in the command line
+The man page proved to be most useful in doing patches. In case of fuzzy and patches including offsets information
+regarding the limits of fuzz were provided. It also provided information about how the program searched for the
+lines in the patch file.
+
+3. www.stackoverflow.com
+This site was used to get some text formatting techniques using printf for -y option in diff. Also the techniques
+regarding directory handling were given on this site. Some sample program for understanding getopt() were referred
+to from this site.
+
+4. www.wikipedia.org
+It was used primarily to understand the diff and patch commands for linux.
+
+5. https://blog.jcoglan.com/2017/02/12/the-myers-diff-algorithm-part-1/
+   and
+6. https://blog.jcoglan.com/2017/02/15/the-myers-diff-algorithm-part-2/
+The above pages were used to understand the Myer's diff algorithm. This pages have good explanation on edit graphs.
+
+7. Abhijit A.M.
+Concept of command line arguments, linking separate code files by generating their machine code files was 
+introduced by him, which was extensively used in this project. Some doubts regarding, which algorithm to use for 
+finding LCS, were cleared by him.

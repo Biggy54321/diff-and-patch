@@ -1,0 +1,77 @@
+//the below code is having uppercase and lowecase characters
+#include "istack.h"
+#include <stdio.h>
+int main() {
+	int i = 0, d, d1, d2, val = 0, max;
+	stack s[3];
+	init(&s[0]);
+	init(&s[1]);
+	init(&s[2]);
+//ENTERING THE DISCS(integers) IN THE FIRST POLE(s[0])
+	printf("Enter the number of discs\n");
+	scanf("%d", &d);
+	max = d + 1;
+	while(d) {
+		push(&s[0], d);
+		d--;
+	}
+//LOGIC START//(!isempty(&s[0]) || !isempty(&s[2])) && (!isempty(&s[0]) || !isempty(&s[1]))
+	while(1) {
+	//sub move1
+		if(!isempty(&s[i]))
+			d = pop(&s[i]);
+		push(&s[(i + 1) % 3], d);
+		val++;
+		if((isempty(&s[0]) && isempty(&s[1])) || (isempty(&s[0]) && isempty(&s[2])))
+			break;
+		if(!isempty(&s[i]))
+			d1 = top(&s[i]);
+		else
+			d1 = max;
+		if(!isempty(&s[(i + 2) % 3]))
+			d2 = top(&s[(i + 2) % 3]);
+		else
+			d2 = max;
+	//sun move2	
+		if(d1 < d2) {
+			d1 = pop(&s[i]);
+			push(&s[(i + 2) % 3], d1);
+		}
+		else {
+			d2 = pop(&s[(i + 2) % 3]);
+			push(&s[i], d2);
+		}
+		val++;
+		if((isempty(&s[0]) && isempty(&s[1])) || (isempty(&s[0]) && isempty(&s[2])))
+			break;
+		i = (i + 1) % 3;
+	}
+//LOGIC END
+//PRINTING THE POLES
+	printf("FIRST STACK- ");
+	if(isempty(&s[0]))
+		printf("(empty)\n");
+	while(!isempty(&s[0])) {
+		d = pop(&s[0]);
+		printf("%d ", d);
+	}
+	printf("SECOND STACK- ");
+	if(isempty(&s[1]))
+		printf("(empty)\n\n");
+	while(!isempty(&s[1])) {
+		d = pop(&s[1]);
+		printf("%d ", d);
+	}
+	if
+	printf("\n");
+	printf("THIRD STACK- ");
+	if(isempty(&s[2]))
+		printf("(empty)\n");
+	while(!isempty(&s[2])) {
+		d = pop(&s[2]);
+		printf("%d ", d);
+	}
+	printf("\n");
+	printf("Number of moves required- %d\n", val);
+	return 0;
+}

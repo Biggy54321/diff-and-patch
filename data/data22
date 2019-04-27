@@ -1,0 +1,77 @@
+//THE BELOW CODE IS HAVING UPPERCASE AND LOWECASE CHARACTERS
+#INCLUDE "ISTACK.H"
+#INCLUDE <STDIO.H>
+INT MAIN() {
+	INT I = 0, D, D1, D2, VAL = 0, MAX;
+	STACK S[3];
+	INIT(&S[0]);
+	INIT(&S[1]);
+	INIT(&S[2]);
+//ENTERING THE DISCS(INTEGERS) IN THE FIRST POLE(S[0])
+	PRINTF("ENTER THE NUMBER OF DISCS\N");
+	SCANF("%D", &D);
+	MAX = D + 1;
+	WHILE(D) {
+		PUSH(&S[0], D);
+		D--;
+	}
+//LOGIC START//(!ISEMPTY(&S[0]) || !ISEMPTY(&S[2])) && (!ISEMPTY(&S[0]) || !ISEMPTY(&S[1]))
+	WHILE(1) {
+	//SUB MOVE1
+		IF(!ISEMPTY(&S[I]))
+			D = POP(&S[I]);
+		PUSH(&S[(I + 1) % 3], D);
+		VAL++;
+		IF((ISEMPTY(&S[0]) && ISEMPTY(&S[1])) || (ISEMPTY(&S[0]) && ISEMPTY(&S[2])))
+			BREAK;
+		IF(!ISEMPTY(&S[I]))
+			D1 = TOP(&S[I]);
+		ELSE
+			D1 = MAX;
+		IF(!ISEMPTY(&S[(I + 2) % 3]))
+			D2 = TOP(&S[(I + 2) % 3]);
+		ELSE
+			D2 = MAX;
+	//SUN MOVE2	
+		IF(D1 < D2) {
+			D1 = POP(&S[I]);
+			PUSH(&S[(I + 2) % 3], D1);
+		}
+		ELSE {
+			D2 = POP(&S[(I + 2) % 3]);
+			PUSH(&S[I], D2);
+		}
+		VAL++;
+		IF((ISEMPTY(&S[0]) && ISEMPTY(&S[1])) || (ISEMPTY(&S[0]) && ISEMPTY(&S[2])))
+			BREAK;
+		I = (I + 1) % 3;
+	}
+//LOGIC END
+//PRINTING THE POLES
+	PRINTF("FIRST STACK- ");
+	IF(ISEMPTY(&S[0]))
+		PRINTF("(EMPTY)\N");
+	WHILE(!ISEMPTY(&S[0])) {
+		D = POP(&S[0]);
+		PRINTF("%D ", D);
+	}
+	PRINTF("SECOND STACK- ");
+	IF(ISEMPTY(&S[1]))
+		PRINTF("(EMPTY)\N\N");
+	WHILE(!ISEMPTY(&S[1])) {
+		D = POP(&S[1]);
+		PRINTF("%D ", D);
+	}
+	IF
+	PRINTF("\N");
+	PRINTF("THIRD STACK- ");
+	IF(ISEMPTY(&S[2]))
+		PRINTF("(EMPTY)\N");
+	WHILE(!ISEMPTY(&S[2])) {
+		D = POP(&S[2]);
+		PRINTF("%D ", D);
+	}
+	PRINTF("\N");
+	PRINTF("NUMBER OF MOVES REQUIRED- %D\N", VAL);
+	RETURN 0;
+}

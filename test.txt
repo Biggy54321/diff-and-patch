@@ -1,0 +1,29 @@
+./project1 data11 data12 -w
+./project1 data21 data22 -i
+./project1 data31 data32 -b
+./project1 data41 data42 -i -w
+./project1 data51 data52 -i -b
+./project1 data61 data62 -t
+./project1 data71 data72 -y
+./project1 data71 data72 -y -t
+./project1 data71 data72 -c
+./project1 data71 data72 -c -t
+./project1 data81 data82 -y
+./project1 data91 data92 -y
+./project1 data101 data102
+./project1 data111 data112 -c
+./project1 data121 data122 -c
+./project1 folder1 folder2
+./project1 folder1 folder2 -y
+./project1 folder1 folder2 -c
+./project1 folder1 folder2 -r
+./project1 folder1 file1
+./project1 data71 data72 > patch1
+./project2 data71 patch1
+./project2 data72 patch1 -R
+./project1 data81 data82 -c > patch2
+./project2 data81 patch2
+./project2 data82 patch2 -R
+./project2 data131 patch3
+./project2 data141 patch4
+./project2 data141 patch4 -R
